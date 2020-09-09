@@ -145,6 +145,16 @@
                     <h5>Step 3</h5>
                     <section>
                         <div class="container">
+                            <div class="columns is-centered">
+                                <div class="column is-3">
+                                    <div class="img_uploader">
+                                        <input type="file" name="" id="file-input">
+                                        <div id='img_contain'>
+                                            <img id="image-preview" src="https://static1.squarespace.com/static/57b711122e69cf5fea1cf5a6/5d2f2f11e13e6e000137d32c/5d2f2f433fa39b0001ee5078/1563374039597/Screen+Shot+2019-07-17+at+10.29.00+AM.png?format=1500w" alt="your image" title=''/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="columns">
                                 <div class="column is-6">
                                     <input type="text" name="institusi" id="">
@@ -155,7 +165,7 @@
                                     <label for="latarBelakangPendidikan">Latar Belakang Pendidikan</label>
                                 </div>
                             </div>
-                            <div class="columns">
+                            <!--div class="columns">
                                 <div class="column is-6">
                                     <input type="text" name="karyaTulis" id="">
                                     <label for="karyaTulis">Karya Tulis</label>
@@ -186,7 +196,7 @@
                                     </select>
                                     <label for="domisili">Domisili Anggota</label>
                                 </div>
-                            </div>
+                            </div-->
                         </div>
                     </section>
                     <h5>Step 4</h5>
@@ -320,6 +330,24 @@
                     })
                 }
             })
+
+            //image upload
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                    $('#image-preview').attr('src', e.target.result);
+                    //$('#image-preview').hide();
+                    $('#image-preview').fadeIn(650);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#file-input").change(function() {
+                readURL(this);
+            });
+
 
 
         });
